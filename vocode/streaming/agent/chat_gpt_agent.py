@@ -3,6 +3,8 @@ import logging
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import openai
+from openai import AsyncOpenAI
+from openai import OpenAI
 from typing import AsyncGenerator, Optional, Tuple
 
 import logging
@@ -60,6 +62,13 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
                 self.agent_config.vector_db_config
             )
 
+
+    def aoai_client(self):
+        return AsyncOpenAI()
+
+    def oai_client(self):
+        return OpenAI()
+
     def get_functions(self):
         assert self.agent_config.actions
         if not self.action_factory:
@@ -104,7 +113,7 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
         ]
 
         parameters = self.get_chat_parameters(messages)
-        return openai.ChatCompletion.create(**parameters)
+        return self.oai_client().completions.create(**parameters)
 
     def attach_transcript(self, transcript: Transcript):
         self.transcript = transcript
@@ -126,7 +135,7 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
             text = self.first_response
         else:
             chat_parameters = self.get_chat_parameters()
-            chat_completion = await openai.ChatCompletion.acreate(**chat_parameters)
+            chat_completion = await self.aoai_client().chat.completions.create(**chat_parameters)
             text = chat_completion.choices[0].message.content
         self.logger.debug(f"LLM response: {text}")
         return text, False
@@ -172,7 +181,7 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
         else:
             chat_parameters = self.get_chat_parameters()
         chat_parameters["stream"] = True
-        stream = await openai.ChatCompletion.acreate(**chat_parameters)
+        stream = await self.aoai_client().chat.completions.create(**chat_parameters)
         async for message in collate_response_async(
             openai_get_tokens(stream), get_functions=True
         ):
