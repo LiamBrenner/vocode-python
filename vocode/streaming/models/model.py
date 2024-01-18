@@ -1,5 +1,6 @@
 from typing import Any, List, Tuple
 import pydantic
+from typing import ClassVar
 
 
 class BaseModel(pydantic.BaseModel):
@@ -18,7 +19,7 @@ class BaseModel(pydantic.BaseModel):
 
 # Adapted from https://github.com/pydantic/pydantic/discussions/3091
 class TypedModel(BaseModel):
-    _subtypes_: List[Tuple[Any, Any]] = []
+    _subtypes_: ClassVar[List[Tuple[Any, Any]]] = []
 
     def __init_subclass__(cls, type=None):
         cls._subtypes_.append((type, cls))
