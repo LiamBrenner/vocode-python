@@ -3,13 +3,13 @@ import asyncio
 import logging
 from typing import AsyncGenerator, Optional, Tuple, Any, Union
 import typing
-from langchain import ConversationChain
+from langchain.chains import ConversationChain
 from vocode.streaming.agent.base_agent import RespondAgent
 from vocode.streaming.models.agent import LlamacppAgentConfig
 from vocode.streaming.agent.utils import collate_response_async
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.callbacks.manager import CallbackManager
-from langchain.llms import LlamaCpp
+from langchain_community.llms import LlamaCpp
 from langchain.prompts import (
     ChatPromptTemplate,
     MessagesPlaceholder,
@@ -24,7 +24,7 @@ from langchain.prompts import (
     HumanMessagePromptTemplate,
     PromptTemplate,
 )
-from langchain.prompts.base import DEFAULT_FORMATTER_MAPPING
+from langchain_core.prompts.string import DEFAULT_FORMATTER_MAPPING
 
 ALPACA_TEMPLATE_WITH_HISTORY = """### Instruction:
 Your previous conversation history:
