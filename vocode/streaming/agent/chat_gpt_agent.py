@@ -81,6 +81,7 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
     def get_chat_parameters(
         self, messages: Optional[List] = None, use_functions: bool = True
     ):
+        self.logger.debug("ChatGPTAgent: get_chat_parameters")
         assert self.transcript is not None
         messages = messages or format_openai_chat_messages_from_transcript(
             self.transcript, self.agent_config.prompt_preamble
@@ -103,6 +104,7 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
         return parameters
 
     def create_first_response(self, first_prompt):
+        self.logger.debug("ChatGPTAgent: create_first_response")
         messages = [
             (
                 [{"role": "system", "content": self.agent_config.prompt_preamble}]
@@ -124,6 +126,7 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
         conversation_id: str,
         is_interrupt: bool = False,
     ) -> Tuple[str, bool]:
+        self.logger.debug("ChatGPTAgent: respond")
         assert self.transcript is not None
         if is_interrupt and self.agent_config.cut_off_response:
             cut_off_response = self.get_cut_off_response()
@@ -146,6 +149,7 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
         conversation_id: str,
         is_interrupt: bool = False,
     ) -> AsyncGenerator[Tuple[Union[str, FunctionCall], bool], None]:
+        self.logger.debug("ChatGPTAgent: generate_response")
         if is_interrupt and self.agent_config.cut_off_response:
             cut_off_response = self.get_cut_off_response()
             yield cut_off_response, False
@@ -185,4 +189,5 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
         async for message in collate_response_async(
             openai_get_tokens(stream), get_functions=True
         ):
+            self.logger.debug("ChatGPTAgent: generate_response, about to yield message and True")
             yield message, True

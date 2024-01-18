@@ -202,6 +202,7 @@ class RespondAgent(BaseAgent[AgentConfigType]):
     async def handle_generate_response(
         self, transcription: Transcription, agent_input: AgentInput
     ) -> bool:
+        self.logger.debug("RespondAgent: handle_generate_response")
         conversation_id = agent_input.conversation_id
         tracer_name_start = await self.get_tracer_name_start()
         agent_span = tracer.start_span(
@@ -239,6 +240,7 @@ class RespondAgent(BaseAgent[AgentConfigType]):
     async def handle_respond(
         self, transcription: Transcription, conversation_id: str
     ) -> bool:
+        self.logger.debug("RespondAgent: handle_respond")
         try:
             tracer_name_start = await self.get_tracer_name_start()
             with tracer.start_as_current_span(f"{tracer_name_start}.respond_total"):
@@ -262,6 +264,7 @@ class RespondAgent(BaseAgent[AgentConfigType]):
         return False
 
     async def process(self, item: InterruptibleEvent[AgentInput]):
+        self.logger.debug("RespondAgent: process")
         if self.is_muted:
             self.logger.debug("Agent is muted, skipping processing")
             return
@@ -345,6 +348,7 @@ class RespondAgent(BaseAgent[AgentConfigType]):
         return None
 
     async def call_function(self, function_call: FunctionCall, agent_input: AgentInput):
+        self.logger.debug("RespondAgent: call_function")
         action_config = self._get_action_config(function_call.name)
         if action_config is None:
             self.logger.error(

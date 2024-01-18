@@ -32,6 +32,8 @@ async def collate_response_async(
     sentence_endings: List[str] = SENTENCE_ENDINGS,
     get_functions: Literal[True, False] = False,
 ) -> AsyncGenerator[Union[str, FunctionCall], None]:
+    print("collate_response_async")
+    print(f"collate_response_async: gen is {gen}")
     sentence_endings_pattern = "|".join(map(re.escape, sentence_endings))
     list_item_ending_pattern = r"\n"
     buffer = ""
@@ -39,9 +41,12 @@ async def collate_response_async(
     function_args_buffer = ""
     prev_ends_with_money = False
     async for token in gen:
+        print("collate_response_async: token is - ", token)
         if not token:
+            print("collate_response_async: no token, continuing")
             continue
         if isinstance(token, str):
+            print("collate_response_async: token is of type str")
             if prev_ends_with_money and token.startswith(" "):
                 yield buffer.strip()
                 buffer = ""
@@ -98,6 +103,7 @@ async def openai_get_tokens(gen) -> AsyncGenerator[Union[str, FunctionFragment],
 
 
 def find_last_punctuation(buffer: str) -> Optional[int]:
+    print("find_last_punctuation")
     indices = [buffer.rfind(ending) for ending in SENTENCE_ENDINGS]
     if not indices:
         return None
@@ -105,6 +111,7 @@ def find_last_punctuation(buffer: str) -> Optional[int]:
 
 
 def get_sentence_from_buffer(buffer: str):
+    print("get_sentence_from_buffer")
     last_punctuation = find_last_punctuation(buffer)
     if last_punctuation:
         return buffer[: last_punctuation + 1], buffer[last_punctuation + 1 :]
@@ -115,6 +122,7 @@ def get_sentence_from_buffer(buffer: str):
 def format_openai_chat_messages_from_transcript(
     transcript: Transcript, prompt_preamble: Optional[str] = None
 ) -> List[dict]:
+    print("format_openai_chat_messages_from_transcript")
     chat_messages: List[Dict[str, Optional[Any]]] = (
         [{"role": "system", "content": prompt_preamble}] if prompt_preamble else []
     )
