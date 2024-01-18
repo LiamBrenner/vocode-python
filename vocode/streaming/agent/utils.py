@@ -13,7 +13,6 @@ from typing import (
     Union,
 )
 
-from openai.openai_object import OpenAIObject
 from vocode.streaming.models.actions import FunctionCall, FunctionFragment
 from vocode.streaming.models.events import Sender
 from vocode.streaming.models.transcript import (
@@ -70,28 +69,37 @@ async def collate_response_async(
             function_name_buffer += token.name
             function_args_buffer += token.arguments
     to_return = buffer.strip()
+    print(f"collate_response_async: response is - {to_return}")
     if to_return:
+        print(f"collate_response_async: there is a to return value, yay!")
         yield to_return
     if function_name_buffer and get_functions:
         yield FunctionCall(name=function_name_buffer, arguments=function_args_buffer)
 
 
 async def openai_get_tokens(gen) -> AsyncGenerator[Union[str, FunctionFragment], None]:
+    print("openai_get_tokens")
     async for event in gen:
-        choices = event.get("choices", [])
+        print(f"openai_get_tokens: event in gen is {event}")
+        choices = event.choices
         if len(choices) == 0:
+            print("openai_get_tokens: length of choices is 0, continuing")
             continue
         choice = choices[0]
         if choice.finish_reason:
+            print("openai_get_tokens: finish reason detected, breaking")
             break
-        delta = choice.get("delta", {})
-        if "text" in delta and delta["text"] is not None:
-            token = delta["text"]
+        delta = choice.delta
+        # if delta.text:
+        #     token = delta.text
+        #     print(f"openai_get_tokens: text in delta and not none, yielding: {token}")
+        #     yield token
+        if delta.content:
+            token = delta.content
+            print(f"openai_get_tokens: content in delta and not none, yielding: {token}")
             yield token
-        if "content" in delta and delta["content"] is not None:
-            token = delta["content"]
-            yield token
-        elif "function_call" in delta and delta["function_call"] is not None:
+        elif delta.function_call:
+            print(f"openai_get_tokens: function in delta and not none, yielding a function call")
             yield FunctionFragment(
                 name=delta["function_call"]["name"]
                 if "name" in delta["function_call"]
