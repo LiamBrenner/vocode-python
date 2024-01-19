@@ -151,13 +151,13 @@ files = [
 
 [[package]]
 name = "anthropic"
-version = "0.9.0"
+version = "0.10.0"
 description = "The official Python library for the anthropic API"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "anthropic-0.9.0-py3-none-any.whl", hash = "sha256:0eb93b2ec175f31573c830b9d9063bc47972a175ee5a04c791af39e30d402978"},
-    {file = "anthropic-0.9.0.tar.gz", hash = "sha256:5324cfc86ef3623c5b90eb5c27245f56abf8ae3a55055268abd20354cf2a9c76"},
+    {file = "anthropic-0.10.0-py3-none-any.whl", hash = "sha256:e48b79b35f5898301a48ac668c4e250ae67ac26377af9752044e352cbc12dbef"},
+    {file = "anthropic-0.10.0.tar.gz", hash = "sha256:0dea5a55a3725b022afb5a5a5db18f1258bfa29fc2c8276c036ee5fa29302aee"},
 ]
 
 [package.dependencies]
@@ -241,17 +241,17 @@ tests-no-zope = ["attrs[tests-mypy]", "cloudpickle", "hypothesis", "pympler", "p
 
 [[package]]
 name = "azure-cognitiveservices-speech"
-version = "1.34.0"
+version = "1.34.1"
 description = "Microsoft Cognitive Services Speech SDK for Python"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "azure_cognitiveservices_speech-1.34.0-py3-none-macosx_10_14_x86_64.whl", hash = "sha256:1c485aa823c5e19963318c4ad24115e5be81aee023060e72c148c8d238efc721"},
-    {file = "azure_cognitiveservices_speech-1.34.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:1097c764f2ab625df21893435d4578e4d1c8dd4ed5206a6de63769c6cd2a8041"},
-    {file = "azure_cognitiveservices_speech-1.34.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:40595fba64a38a88168b1a85c01c5d9ef961c143c0b50f27d447372b47a7e898"},
-    {file = "azure_cognitiveservices_speech-1.34.0-py3-none-manylinux2014_aarch64.whl", hash = "sha256:932830782a1e8ef33e33850fbca038d4a560cff882ba0998bafdce91b027f4ca"},
-    {file = "azure_cognitiveservices_speech-1.34.0-py3-none-win32.whl", hash = "sha256:3673eeab808379e63ca610aef213690dc349f547312d33bfd9076c7a396228c6"},
-    {file = "azure_cognitiveservices_speech-1.34.0-py3-none-win_amd64.whl", hash = "sha256:1b2920bab32fd911c7c20e99c26442f36df5d10e03c79be464bd863d10af8084"},
+    {file = "azure_cognitiveservices_speech-1.34.1-py3-none-macosx_10_14_x86_64.whl", hash = "sha256:f0bbdb78b6c48b34b870bb05e7085ae277ef230425b86e25ac62f808480bbbbf"},
+    {file = "azure_cognitiveservices_speech-1.34.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:501be52021acea776c23e1fae3fc08b65801008dc6d919959758723ee8114fbf"},
+    {file = "azure_cognitiveservices_speech-1.34.1-py3-none-manylinux1_x86_64.whl", hash = "sha256:d28ec35b4e88d5205dda2afb401588d185dabeede9a16432d53f8751bcf853ba"},
+    {file = "azure_cognitiveservices_speech-1.34.1-py3-none-manylinux2014_aarch64.whl", hash = "sha256:12a243371a133d0299fcebb067ed93e989fdeaa163b5dcf63f6f2d6a2ebcb8e7"},
+    {file = "azure_cognitiveservices_speech-1.34.1-py3-none-win32.whl", hash = "sha256:cd0d4b84b6fd1657ad1f2b088fa83bb851c6f1568b514d92f265d9e958e7f83f"},
+    {file = "azure_cognitiveservices_speech-1.34.1-py3-none-win_amd64.whl", hash = "sha256:21a1fc84eca697332862af0a1fafe0766e9742c91848e0c3a6cf4f883081721d"},
 ]
 
 [[package]]
@@ -302,17 +302,17 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "boto3"
-version = "1.34.16"
+version = "1.34.22"
 description = "The AWS SDK for Python"
 optional = false
 python-versions = ">= 3.8"
 files = [
-    {file = "boto3-1.34.16-py3-none-any.whl", hash = "sha256:23d2ad6111ab8b734b11f01bb158bea633b2901dcdd4f8e255154051d9138256"},
-    {file = "boto3-1.34.16.tar.gz", hash = "sha256:a316c87223f7f37b62af825524745ffb93f5b18580f3912acc39a1704d44ea43"},
+    {file = "boto3-1.34.22-py3-none-any.whl", hash = "sha256:5909cd1393143576265c692e908a9ae495492c04a0ffd4bae8578adc2e44729e"},
+    {file = "boto3-1.34.22.tar.gz", hash = "sha256:a98c0b86f6044ff8314cc2361e1ef574d674318313ab5606ccb4a6651c7a3f8c"},
 ]
 
 [package.dependencies]
-botocore = ">=1.34.16,<1.35.0"
+botocore = ">=1.34.22,<1.35.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.10.0,<0.11.0"
 
@@ -321,13 +321,13 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.34.16"
+version = "1.34.22"
 description = "Low-level, data-driven core of boto 3."
 optional = false
 python-versions = ">= 3.8"
 files = [
-    {file = "botocore-1.34.16-py3-none-any.whl", hash = "sha256:e59f3340673abd31e042b494a4bca96e55d232f7d3f8222a40a6273515e25891"},
-    {file = "botocore-1.34.16.tar.gz", hash = "sha256:94697602998dced2ce63321a3dbb2e3ddd477721b376cde41fcca9d3ef069037"},
+    {file = "botocore-1.34.22-py3-none-any.whl", hash = "sha256:e5f7775975b9213507fbcf846a96b7a2aec2a44fc12a44585197b014a4ab0889"},
+    {file = "botocore-1.34.22.tar.gz", hash = "sha256:c47ba4286c576150d1b6ca6df69a87b5deff3d23bd84da8bcf8431ebac3c40ba"},
 ]
 
 [package.dependencies]
@@ -905,13 +905,13 @@ grpcio-gcp = ["grpcio-gcp (>=0.2.2,<1.0.dev0)"]
 
 [[package]]
 name = "google-auth"
-version = "2.26.1"
+version = "2.26.2"
 description = "Google Authentication Library"
 optional = true
 python-versions = ">=3.7"
 files = [
-    {file = "google-auth-2.26.1.tar.gz", hash = "sha256:54385acca5c0fbdda510cd8585ba6f3fcb06eeecf8a6ecca39d3ee148b092590"},
-    {file = "google_auth-2.26.1-py2.py3-none-any.whl", hash = "sha256:2c8b55e3e564f298122a02ab7b97458ccfcc5617840beb5d0ac757ada92c9780"},
+    {file = "google-auth-2.26.2.tar.gz", hash = "sha256:97327dbbf58cccb58fc5a1712bba403ae76668e64814eb30f7316f7e27126b81"},
+    {file = "google_auth-2.26.2-py2.py3-none-any.whl", hash = "sha256:3f445c8ce9b61ed6459aad86d8ccdba4a9afed841b2d1451a11ef4db08957424"},
 ]
 
 [package.dependencies]
@@ -968,13 +968,13 @@ xai = ["tensorflow (>=2.3.0,<3.0.0dev)"]
 
 [[package]]
 name = "google-cloud-bigquery"
-version = "3.15.0"
+version = "3.16.0"
 description = "Google BigQuery API client library"
 optional = true
 python-versions = ">=3.7"
 files = [
-    {file = "google-cloud-bigquery-3.15.0.tar.gz", hash = "sha256:79a62bd12588696a393055347770522a0218b1a364d57621cfd62ba296e1d005"},
-    {file = "google_cloud_bigquery-3.15.0-py2.py3-none-any.whl", hash = "sha256:57d083685b7f19af0af4d51af4950b50f2fe2983227a122e2f239eb5dc4e0447"},
+    {file = "google-cloud-bigquery-3.16.0.tar.gz", hash = "sha256:1d6abf4b1d740df17cb43a078789872af8059a0b1dd999f32ea69ebc6f7ba7ef"},
+    {file = "google_cloud_bigquery-3.16.0-py2.py3-none-any.whl", hash = "sha256:8bac7754f92bf87ee81f38deabb7554d82bb9591fbe06a5c82f33e46e5a482f9"},
 ]
 
 [package.dependencies]
@@ -1668,13 +1668,13 @@ files = [
 
 [[package]]
 name = "langchain"
-version = "0.1.0"
+version = "0.1.1"
 description = "Building applications with LLMs through composability"
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langchain-0.1.0-py3-none-any.whl", hash = "sha256:8652e74b039333a55c79faff4400b077ba1bd0ddce5255574e42d301c05c1733"},
-    {file = "langchain-0.1.0.tar.gz", hash = "sha256:d43119f8d3fda2c8ddf8c3a19bd5b94b347e27d1867ff14a921b90bdbed0668a"},
+    {file = "langchain-0.1.1-py3-none-any.whl", hash = "sha256:3f1dcf458bbd603447e93ece99fe6611b1fafa16dc67464b1c8091dd475242f9"},
+    {file = "langchain-0.1.1.tar.gz", hash = "sha256:a9616544b78ccf1a5b286fae7926e00beea6dc5b8fda983e5180313fefd3dfab"},
 ]
 
 [package.dependencies]
@@ -1682,8 +1682,8 @@ aiohttp = ">=3.8.3,<4.0.0"
 async-timeout = {version = ">=4.0.0,<5.0.0", markers = "python_version < \"3.11\""}
 dataclasses-json = ">=0.5.7,<0.7"
 jsonpatch = ">=1.33,<2.0"
-langchain-community = ">=0.0.9,<0.1"
-langchain-core = ">=0.1.7,<0.2"
+langchain-community = ">=0.0.13,<0.1"
+langchain-core = ">=0.1.9,<0.2"
 langsmith = ">=0.0.77,<0.1.0"
 numpy = ">=1,<2"
 pydantic = ">=1,<3"
@@ -1708,19 +1708,19 @@ text-helpers = ["chardet (>=5.1.0,<6.0.0)"]
 
 [[package]]
 name = "langchain-community"
-version = "0.0.11"
+version = "0.0.13"
 description = "Community contributed LangChain integrations."
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langchain_community-0.0.11-py3-none-any.whl", hash = "sha256:30ab1d7dbf35d0ebe684d8a1e8964e8dedd3d31a3703790436b39674cfa06f41"},
-    {file = "langchain_community-0.0.11.tar.gz", hash = "sha256:eaeaa8d63427ecf0cb32fe2f1ba4d05ad6d5ef9f7019baf21dc2dde5b1403002"},
+    {file = "langchain_community-0.0.13-py3-none-any.whl", hash = "sha256:655196e446e7f37f4882221b6f3f791d6add28ea596d521ccf6f4507386b9a13"},
+    {file = "langchain_community-0.0.13.tar.gz", hash = "sha256:cf66c6ff7fcbeb582f5e88ee00decea7fdeca5ccddda725046f28efc697c41a7"},
 ]
 
 [package.dependencies]
 aiohttp = ">=3.8.3,<4.0.0"
 dataclasses-json = ">=0.5.7,<0.7"
-langchain-core = ">=0.1.8,<0.2"
+langchain-core = ">=0.1.9,<0.2"
 langsmith = ">=0.0.63,<0.1.0"
 numpy = ">=1,<2"
 PyYAML = ">=5.3"
@@ -1734,13 +1734,13 @@ extended-testing = ["aiosqlite (>=0.19.0,<0.20.0)", "aleph-alpha-client (>=2.15.
 
 [[package]]
 name = "langchain-core"
-version = "0.1.9"
+version = "0.1.12"
 description = "Building applications with LLMs through composability"
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langchain_core-0.1.9-py3-none-any.whl", hash = "sha256:1dd45aec185ce3afb1c19fb2e88cdbc19fafa7ae929d8107799a7c82ef69ea9f"},
-    {file = "langchain_core-0.1.9.tar.gz", hash = "sha256:4b51fdbdbc06027c26ea89a6da809cae2e404c9daa95dc6c10e3eae383d8ea6a"},
+    {file = "langchain_core-0.1.12-py3-none-any.whl", hash = "sha256:d11c6262f7a9deff7de8fdf14498b8a951020dfed3a80f2358ab731ad04abef0"},
+    {file = "langchain_core-0.1.12.tar.gz", hash = "sha256:f18e9300e9a07589b3e280e51befbc5a4513f535949406e55eb7a2dc40c3ce66"},
 ]
 
 [package.dependencies]
@@ -1758,13 +1758,13 @@ extended-testing = ["jinja2 (>=3,<4)"]
 
 [[package]]
 name = "langsmith"
-version = "0.0.79"
+version = "0.0.83"
 description = "Client library to connect to the LangSmith LLM Tracing and Evaluation Platform."
 optional = false
 python-versions = ">=3.8.1,<4.0"
 files = [
-    {file = "langsmith-0.0.79-py3-none-any.whl", hash = "sha256:be0374e913c36d9f6a13dd6b6e20a506066d5a0f3abfd476f9cf9e0b086ed744"},
-    {file = "langsmith-0.0.79.tar.gz", hash = "sha256:d32639ccd18a92533b302f6f482255619afc8eb007fff91e37ee699d947c5e29"},
+    {file = "langsmith-0.0.83-py3-none-any.whl", hash = "sha256:a5bb7ac58c19a415a9d5f51db56dd32ee2cd7343a00825bbc2018312eb3d122a"},
+    {file = "langsmith-0.0.83.tar.gz", hash = "sha256:94427846b334ad9bdbec3266fee12903fe9f5448f628667689d0412012aaf392"},
 ]
 
 [package.dependencies]
@@ -2185,13 +2185,13 @@ test = ["mock", "pytest", "pytest-cov", "pytest-mock", "pytest-timeout", "pytz",
 
 [[package]]
 name = "openai"
-version = "1.7.1"
+version = "1.8.0"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.7.1"
 files = [
-    {file = "openai-1.7.1-py3-none-any.whl", hash = "sha256:e52ad7ea015331edc584e6e9c98741c819d7ffbbd2ecc50bf1f55c33f9cb3f77"},
-    {file = "openai-1.7.1.tar.gz", hash = "sha256:7556e6aa30e20254b1ad68de49bb5ef4d8106bfac5e8a78abdc1daa911fbb1fb"},
+    {file = "openai-1.8.0-py3-none-any.whl", hash = "sha256:0f8f53805826103fdd8adaf379ad3ec23f9d867e698cbc14caf34b778d150175"},
+    {file = "openai-1.8.0.tar.gz", hash = "sha256:93366be27802f517e89328801913d2a5ede45e3b86fdcab420385b8a1b88c767"},
 ]
 
 [package.dependencies]
@@ -3472,13 +3472,13 @@ test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest (>=7.0,
 
 [[package]]
 name = "twilio"
-version = "8.11.0"
+version = "8.11.1"
 description = "Twilio API client and TwiML generator"
 optional = true
 python-versions = ">=3.7.0"
 files = [
-    {file = "twilio-8.11.0-py2.py3-none-any.whl", hash = "sha256:90fd47f220e597163020d3755a81aed76fd217e116ab36fd241d9bf48d1a0a18"},
-    {file = "twilio-8.11.0.tar.gz", hash = "sha256:792509da936c4f47d9fa7071d5f1f3bdc9314aaf96225bac4f0ef28f8688a95b"},
+    {file = "twilio-8.11.1-py2.py3-none-any.whl", hash = "sha256:0c079601b972cca25dbe0e259d5c4a01c94795842f6b9f1d02c82269019d7cbb"},
+    {file = "twilio-8.11.1.tar.gz", hash = "sha256:6dfafb60e7a89ad19d2fc4055ce2b86215d30fc68d88452fa588897de8608c71"},
 ]
 
 [package.dependencies]
@@ -4020,4 +4020,4 @@ transcribers = ["google-cloud-speech"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0"
-content-hash = "2454601757dfe8c3548434233bffd1e40ee8bf603df215c6d1274fabaf6c3975"
+content-hash = "79b022565c9d60084d1d4d0482e1c81787bf21a574ce023a8ecac7b8a4e76fb4"
