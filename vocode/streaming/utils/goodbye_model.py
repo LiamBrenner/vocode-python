@@ -1,9 +1,11 @@
-import os
 import asyncio
+import os
 from typing import Optional
-import openai
+
 import numpy as np
+import openai
 import requests
+from openai import AsyncOpenAI
 
 from vocode import getenv
 
@@ -75,8 +77,10 @@ class GoodbyeModel:
         else:
             params["model"] = "text-embedding-ada-002"
 
+        oai_client = AsyncOpenAI()
+
         return np.array(
-            (await openai.Embedding.acreate(**params))["data"][0]["embedding"]
+            (await oai_client.embeddings.create(**params)).data[0].embedding
         )
 
 
