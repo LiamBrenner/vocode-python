@@ -1,6 +1,8 @@
-from typing import Optional, Type
-from pydantic import BaseModel, Field
 import os
+from typing import Optional, Type
+
+from pydantic.v1 import BaseModel, Field
+
 from vocode.streaming.action.base_action import BaseAction
 from vocode.streaming.models.actions import (
     ActionConfig,

@@ -1,26 +1,21 @@
 import logging
-
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, AsyncGenerator, Dict, List, Optional, Tuple, Union
 
 import openai
-from openai import AsyncOpenAI
-from openai import OpenAI
-from typing import AsyncGenerator, Optional, Tuple
-
-import logging
-from pydantic import BaseModel
+from openai import AsyncOpenAI, OpenAI
+from pydantic.v1 import BaseModel
 
 from vocode import getenv
 from vocode.streaming.action.factory import ActionFactory
 from vocode.streaming.agent.base_agent import RespondAgent
-from vocode.streaming.models.actions import FunctionCall, FunctionFragment
-from vocode.streaming.models.agent import ChatGPTAgentConfig
 from vocode.streaming.agent.utils import (
-    format_openai_chat_messages_from_transcript,
     collate_response_async,
+    format_openai_chat_messages_from_transcript,
     openai_get_tokens,
     vector_db_result_to_openai_chat_message,
 )
+from vocode.streaming.models.actions import FunctionCall, FunctionFragment
+from vocode.streaming.models.agent import ChatGPTAgentConfig
 from vocode.streaming.models.events import Sender
 from vocode.streaming.models.transcript import Transcript
 from vocode.streaming.vector_db.factory import VectorDBFactory
@@ -61,7 +56,6 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
             self.vector_db = vector_db_factory.create_vector_db(
                 self.agent_config.vector_db_config
             )
-
 
     def aoai_client(self):
         return AsyncOpenAI()
@@ -138,7 +132,9 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
             text = self.first_response
         else:
             chat_parameters = self.get_chat_parameters()
-            chat_completion = await self.aoai_client().chat.completions.create(**chat_parameters)
+            chat_completion = await self.aoai_client().chat.completions.create(
+                **chat_parameters
+            )
             text = chat_completion.choices[0].message.content
         self.logger.debug(f"LLM response: {text}")
         return text, False
@@ -189,5 +185,7 @@ class ChatGPTAgent(RespondAgent[ChatGPTAgentConfig]):
         async for message in collate_response_async(
             openai_get_tokens(stream), get_functions=True
         ):
-            self.logger.debug("ChatGPTAgent: generate_response, about to yield message and True")
+            self.logger.debug(
+                "ChatGPTAgent: generate_response, about to yield message and True"
+            )
             yield message, True

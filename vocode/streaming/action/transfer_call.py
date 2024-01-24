@@ -1,9 +1,9 @@
 import os
-import aiohttp
-
-from aiohttp import BasicAuth
 from typing import Type
-from pydantic import BaseModel, Field
+
+import aiohttp
+from aiohttp import BasicAuth
+from pydantic.v1 import BaseModel, Field
 
 from vocode.streaming.action.phone_call_action import TwilioPhoneCallAction
 from vocode.streaming.models.actions import (

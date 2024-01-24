@@ -1,14 +1,15 @@
 from typing import List, Optional
+
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
-from pydantic import BaseModel
+from pydantic.v1 import BaseModel
 
 from vocode import getenv
 
 TEMPLATE = """
 Read the following conversation classify the final emotion of the Bot as one of [{emotions}].
 Output the degree of emotion as a value between 0 and 1 in the format EMOTION,DEGREE: ex. {example_emotion},0.5
-            
+
 <start>
 {{transcript}}
 <end>

@@ -1,16 +1,17 @@
 from enum import Enum
 from typing import Any, Dict, List, Optional, Union
 
-from pydantic import validator
-from vocode.streaming.models.client_backend import OutputAudioConfig
+from pydantic.v1 import validator
 
+from vocode.streaming.models.client_backend import OutputAudioConfig
 from vocode.streaming.output_device.base_output_device import BaseOutputDevice
 from vocode.streaming.telephony.constants import (
     DEFAULT_AUDIO_ENCODING,
     DEFAULT_SAMPLING_RATE,
 )
-from .model import BaseModel, TypedModel
+
 from .audio_encoding import AudioEncoding
+from .model import BaseModel, TypedModel
 
 
 class SynthesizerType(str, Enum):
@@ -52,7 +53,7 @@ class SynthesizerConfig(TypedModel, type=SynthesizerType.BASE.value):
         return cls(
             sampling_rate=output_device.sampling_rate,
             audio_encoding=output_device.audio_encoding,
-            **kwargs
+            **kwargs,
         )
 
     # TODO(EPD-186): switch to from_twilio_output_device and from_vonage_output_device
@@ -61,7 +62,7 @@ class SynthesizerConfig(TypedModel, type=SynthesizerType.BASE.value):
         return cls(
             sampling_rate=DEFAULT_SAMPLING_RATE,
             audio_encoding=DEFAULT_AUDIO_ENCODING,
-            **kwargs
+            **kwargs,
         )
 
     @classmethod
@@ -69,7 +70,7 @@ class SynthesizerConfig(TypedModel, type=SynthesizerType.BASE.value):
         return cls(
             sampling_rate=output_audio_config.sampling_rate,
             audio_encoding=output_audio_config.audio_encoding,
-            **kwargs
+            **kwargs,
         )
 
 

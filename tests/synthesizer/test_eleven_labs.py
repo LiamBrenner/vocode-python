@@ -1,13 +1,15 @@
 import asyncio
-from pydantic import ValidationError
+
 import pytest
+from aioresponses import aioresponses
+from pydantic.v1 import ValidationError
+from pydub import AudioSegment
+
+from vocode.streaming.models.audio_encoding import AudioEncoding
+from vocode.streaming.models.message import BaseMessage
+from vocode.streaming.models.synthesizer import ElevenLabsSynthesizerConfig
 from vocode.streaming.synthesizer.base_synthesizer import SynthesisResult
 from vocode.streaming.synthesizer.eleven_labs_synthesizer import ElevenLabsSynthesizer
-from vocode.streaming.models.synthesizer import ElevenLabsSynthesizerConfig
-from aioresponses import aioresponses
-from vocode.streaming.models.message import BaseMessage
-from vocode.streaming.models.audio_encoding import AudioEncoding
-from pydub import AudioSegment
 
 
 async def assert_synthesis_result_valid(synthesizer: ElevenLabsSynthesizer):
@@ -55,9 +57,11 @@ async def test_with_env_api_key(
     )
 
 
-import pytest
 from unittest.mock import AsyncMock, patch
+
 import aiohttp
+import pytest
+
 from vocode.streaming.models.message import BaseMessage
 from vocode.streaming.synthesizer.eleven_labs_synthesizer import (
     ElevenLabsSynthesizer,
@@ -87,8 +91,9 @@ def mock_api_response():
 
 @pytest.fixture
 def mock_streaming_api_response():
-    import aiohttp
     from unittest.mock import AsyncMock, MagicMock
+
+    import aiohttp
 
     async def response(*args, **kwargs):
         # Create a mock for aiohttp.ClientResponse

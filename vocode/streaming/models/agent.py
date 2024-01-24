@@ -1,12 +1,13 @@
-from typing import List, Optional, Union
 from enum import Enum
+from typing import List, Optional, Union
+
 from langchain.prompts import PromptTemplate
+from pydantic.v1 import validator
 
-from pydantic import validator
 from vocode.streaming.models.actions import ActionConfig
-
 from vocode.streaming.models.message import BaseMessage
-from .model import TypedModel, BaseModel
+
+from .model import BaseModel, TypedModel
 from .vector_db import VectorDBConfig
 
 FILLER_AUDIO_DEFAULT_SILENCE_THRESHOLD_SECONDS = 0.5

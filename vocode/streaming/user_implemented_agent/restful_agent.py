@@ -1,16 +1,18 @@
 # type: ignore
 # to be deprecated
 
-from .base_agent import BaseAgent
+from typing import Union
+
+from fastapi import APIRouter
+from pydantic.v1 import BaseModel
+
 from ..models.agent import (
+    RESTfulAgentEnd,
     RESTfulAgentInput,
     RESTfulAgentOutput,
     RESTfulAgentText,
-    RESTfulAgentEnd,
 )
-from pydantic import BaseModel
-from typing import Union
-from fastapi import APIRouter
+from .base_agent import BaseAgent
 
 
 class RESTfulAgent(BaseAgent):

@@ -1,17 +1,19 @@
 from typing import Any, Dict, List, Optional, Union
+
+import pytest
 from openai.openai_object import OpenAIObject
-from pydantic import BaseModel
+from pydantic.v1 import BaseModel
+
+from vocode.streaming.agent.utils import (
+    collate_response_async,
+    format_openai_chat_messages_from_transcript,
+    openai_get_tokens,
+)
 from vocode.streaming.models.actions import (
     ActionConfig,
     ActionInput,
     ActionOutput,
     FunctionCall,
-)
-import pytest
-from vocode.streaming.agent.utils import (
-    collate_response_async,
-    format_openai_chat_messages_from_transcript,
-    openai_get_tokens,
 )
 from vocode.streaming.models.events import Sender
 from vocode.streaming.models.transcript import (

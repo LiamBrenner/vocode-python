@@ -1,6 +1,6 @@
-from typing import Any, List, Tuple
-import pydantic
-from typing import ClassVar
+from typing import Any, ClassVar, List, Tuple
+
+import pydantic.v1 as pydantic
 
 
 class BaseModel(pydantic.BaseModel):

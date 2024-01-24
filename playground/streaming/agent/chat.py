@@ -1,8 +1,10 @@
 import asyncio
 import typing
+
 from dotenv import load_dotenv
+from pydantic.v1 import BaseModel
+
 from playground.streaming.tracing_utils import make_parser_and_maybe_trace
-from pydantic import BaseModel
 from vocode.streaming.action.base_action import BaseAction
 from vocode.streaming.action.factory import ActionFactory
 from vocode.streaming.action.worker import ActionsWorker
@@ -21,12 +23,11 @@ load_dotenv()
 
 from vocode.streaming.agent import ChatGPTAgent
 from vocode.streaming.agent.base_agent import (
-    BaseAgent,
     AgentResponseMessage,
     AgentResponseType,
+    BaseAgent,
     TranscriptionAgentInput,
 )
-
 from vocode.streaming.transcriber.base_transcriber import Transcription
 from vocode.streaming.utils import create_conversation_id
 

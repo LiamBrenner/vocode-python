@@ -1,30 +1,27 @@
-from concurrent.futures import ThreadPoolExecutor
 import asyncio
 import logging
-from typing import AsyncGenerator, Optional, Tuple, Any, Union
 import typing
-from langchain.chains import ConversationChain
-from vocode.streaming.agent.base_agent import RespondAgent
-from vocode.streaming.models.agent import LlamacppAgentConfig
-from vocode.streaming.agent.utils import collate_response_async
+from concurrent.futures import ThreadPoolExecutor
+from typing import Any, AsyncGenerator, Optional, Tuple, Union
+
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.callbacks.manager import CallbackManager
-from langchain_community.llms import LlamaCpp
-from langchain.prompts import (
-    ChatPromptTemplate,
-    MessagesPlaceholder,
-    HumanMessagePromptTemplate,
-)
-from pydantic import BaseModel
-from langchain.schema import LLMResult, SystemMessage, get_buffer_string
+from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import (
     ChatPromptTemplate,
-    MessagesPlaceholder,
     HumanMessagePromptTemplate,
+    MessagesPlaceholder,
     PromptTemplate,
 )
+from langchain.schema import LLMResult, SystemMessage, get_buffer_string
+from langchain_community.llms import LlamaCpp
 from langchain_core.prompts.string import DEFAULT_FORMATTER_MAPPING
+from pydantic.v1 import BaseModel
+
+from vocode.streaming.agent.base_agent import RespondAgent
+from vocode.streaming.agent.utils import collate_response_async
+from vocode.streaming.models.agent import LlamacppAgentConfig
 
 ALPACA_TEMPLATE_WITH_HISTORY = """### Instruction:
 Your previous conversation history:

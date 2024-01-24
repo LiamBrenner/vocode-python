@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import List, Optional
 
-from pydantic import validator
+from pydantic.v1 import validator
 
 from vocode.streaming.input_device.base_input_device import BaseInputDevice
 from vocode.streaming.models.client_backend import InputAudioConfig
@@ -10,6 +10,7 @@ from vocode.streaming.telephony.constants import (
     DEFAULT_CHUNK_SIZE,
     DEFAULT_SAMPLING_RATE,
 )
+
 from .audio_encoding import AudioEncoding
 from .model import TypedModel
 
